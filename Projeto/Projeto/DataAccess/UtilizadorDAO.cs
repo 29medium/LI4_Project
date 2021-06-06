@@ -151,7 +151,49 @@ namespace Projeto.DataAccess
             return Convert.ToBoolean(RowsAffected);
         }
 
-        
+        public List<String> Historico(int userID) {
+            List<String> historico = new List<String>();
+            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            // create command object with SQL query and link to connection object
+            SqlCommand Cmd = new SqlCommand("SELECT Empresa.Nome FROM Historico WHERE UserID = @UserID" + 
+                                            " INNER JOIN Empresa WHERE Empresa.EmpresaID = Historico.EmpresaID", Con);
+
+
+            Cmd.Parameters.Add("@UserID", System.Data.SqlDbType.Int);
+            Cmd.Parameters["@UserID"].Value = userID;
+            Con.Open();
+
+            SqlDataReader reader = Cmd.ExecuteReader();
+            while(reader.Read()){
+                historico.add(reader["Nome"].ToString());
+            }
+
+            Con.Close();
+
+            return historico;
+        }
+
+        public List<String> Favoritos(int userID) {
+            List<String> favoritos = new List<String>();
+            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            // create command object with SQL query and link to connection object
+            SqlCommand Cmd = new SqlCommand("SELECT Empresa.Nome FROM Favoritos WHERE UserID = @UserID" + 
+                                            " INNER JOIN Empresa WHERE Empresa.EmpresaID = Historico.EmpresaID", Con);
+
+            Cmd.Parameters.Add("@UserID", System.Data.SqlDbType.Int);
+            Cmd.Parameters["@UserID"].Value = userID;
+            
+            Con.Open();
+
+            SqlDataReader reader = Cmd.ExecuteReader();
+            while(reader.Read()){
+                favoritos.add(reader["Nome"].ToString());
+            }
+
+            Con.Close();
+
+            return favoritos;
+        }
 
 
 

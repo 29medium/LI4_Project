@@ -97,5 +97,47 @@ namespace Projeto.DataAccess
 
             return empresas;
         }
+
+        public List<String> listaEmpresasMercado(int mercado) {
+            List<String> empresas = new List<String>();
+            SqlConnection Con = new SqlConnection("MyConnectionString");
+            // create command object with SQL query and link to connection object
+            SqlCommand Cmd = new SqlCommand("SELECT Nome FROM Empresa WHERE mercadoID = @mercadoID", Con);
+
+            Cmd.Parameters.Add("@MercadoID", System.Data.SqlDbType.Int);
+            Cmd.Parameters["@MercadoID"].Value = mercado;
+
+            Con.Open();
+
+            SqlDataReader reader = Cmd.ExecuteReader();
+            while(reader.Read()){
+                empresas.add(reader["Nome"].ToString());
+            }
+
+            Con.Close();
+
+            return empresas;
+        }
+
+        public List<String> listaEmpresasMercado(string cat) {
+            List<String> empresas = new List<String>();
+            SqlConnection Con = new SqlConnection("MyConnectionString");
+            // create command object with SQL query and link to connection object
+            SqlCommand Cmd = new SqlCommand("SELECT Nome FROM Empresa WHERE categoria = @categoria", Con);
+
+            Cmd.Parameters.Add("@Categoria", System.Data.SqlDbType.String);
+            Cmd.Parameters["@Categoria"].Value = cat;
+
+            Con.Open();
+
+            SqlDataReader reader = Cmd.ExecuteReader();
+            while(reader.Read()){
+                empresas.add(reader["Nome"].ToString());
+            }
+
+            Con.Close();
+
+            return empresas;
+        }
     }
 }
