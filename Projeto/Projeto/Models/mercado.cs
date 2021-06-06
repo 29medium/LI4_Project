@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace SmartInvest.Models
+namespace Projeto.Models
 {
     public class Mercado
     {

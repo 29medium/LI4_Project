@@ -1,6 +1,6 @@
 using System;
-using SmartInvest.Models;
-using SmartInvest.DataAccess;
+using Projeto.Models;
+using Projeto.DataAccess;
 using System.Data.SqlClient;
 using System.Data;
 using System.Collections.Generic;
@@ -8,13 +8,13 @@ using System.Text;
 using System.Linq;
 
 
-namespace SmartInvest.DataAccess
+namespace Projeto.DataAccess
 {
     public class EmpresaDAO
     {
     	public bool Insert(Empresa e) {
-    		// create sql connection object.  Be sure to put a valid connection string
-            SqlConnection Con = new SqlConnection("MyConnectionString");
+            // create sql connection object.  Be sure to put a valid connection Text
+            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("INSERT INTO Empresa " +
 				"(EmpresaID,Nome,Categoria,Website,CoordX,CoordY,MercadoID) " +
@@ -22,9 +22,9 @@ namespace SmartInvest.DataAccess
 
             // create your parameters
             Cmd.Parameters.Add("@EmpresaID", System.Data.SqlDbType.Int);
-            Cmd.Parameters.Add("@Nome", System.Data.SqlDbType.String);
-            Cmd.Parameters.Add("@Categoria", System.Data.SqlDbType.String);
-            Cmd.Parameters.Add("@Website", System.Data.SqlDbType.String);
+            Cmd.Parameters.Add("@Nome", System.Data.SqlDbType.Text);
+            Cmd.Parameters.Add("@Categoria", System.Data.SqlDbType.Text);
+            Cmd.Parameters.Add("@Website", System.Data.SqlDbType.Text);
             Cmd.Parameters.Add("@CoordX", System.Data.SqlDbType.Float);
             Cmd.Parameters.Add("@CoordY", System.Data.SqlDbType.Float);
             Cmd.Parameters.Add("@MercadoID", System.Data.SqlDbType.Int);
@@ -45,10 +45,12 @@ namespace SmartInvest.DataAccess
             int RowsAffected = Cmd.ExecuteNonQuery();
 
             Con.Close();
+
+            return Convert.ToBoolean(RowsAffected);
     	}
 
         public Empresa get(int empresaID) {
-            SqlConnection Con = new SqlConnection("MyConnectionString");
+            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT * FROM Empresa WHERE EmpresaID = @EmpresaID", Con);
 
@@ -63,9 +65,9 @@ namespace SmartInvest.DataAccess
                 e.empresaID = empresaID;
                 e.nome = reader["Nome"].ToString();
                 e.categoria = reader["Categoria"].ToString();
-                e.coordX = reader["CoordX"].ToFloat();
-                e.coordY = reader["CoordY"].ToFloat();
-                e.mercadoID = reader["MercadoID"].ToInt();
+                e.coordX = reader.GetFloat("CoordX");
+                e.coordY = reader.GetFloat("CoordY");
+                e.mercadoID = reader.GetInt32("MercadoID");
                 e.website = reader["Website"].ToString();
             }
             else {
@@ -76,26 +78,19 @@ namespace SmartInvest.DataAccess
             return e;
         }
 
-        public List<Empresa> listaEmpresas() {
-            List<Empresa> empresas = new List<Empresa>();
-            SqlConnection Con = new SqlConnection("MyConnectionString");
+        public List<String> listaEmpresas()
+        {
+            List<String> empresas = new List<String>();
+            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand("SELECT * FROM Empresa", Con);
+            SqlCommand Cmd = new SqlCommand("SELECT Nome FROM Empresa", Con);
 
             Con.Open();
 
             SqlDataReader reader = Cmd.ExecuteReader();
-            while(reader.Read()){
-                Empresa e = new Empresa();
-                e.empresaID = reader["EmpresaID"].ToInt();;
-                e.nome = reader["Nome"].ToString();
-                e.categoria = reader["Categoria"].ToString();
-                e.coordX = reader["CoordX"].ToFloat();
-                e.coordY = reader["CoordY"].ToFloat();
-                e.mercadoID = reader["MercadoID"].ToInt();
-                e.website = reader["Website"].ToString();
-
-                empresas.add(e);
+            while (reader.Read())
+            {
+                empresas.Add(reader["Nome"].ToString());
             }
 
             Con.Close();

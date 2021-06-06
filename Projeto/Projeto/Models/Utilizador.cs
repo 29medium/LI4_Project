@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace SmartInvest.Models
+namespace Projeto.Models
 {
     public class Utilizador
     {
@@ -26,7 +26,7 @@ namespace SmartInvest.Models
         public float coordY{ get; set; }
 
         public Utilizador() { }
-        public Utilizador(int id,string pN,string uN,string username,string pass,string email,string exp, float capMon, string ai, float x, float y)
+        public Utilizador(int id,string pN,string uN,string username,string pass,string email,int exp, float capMon, string ai, float x, float y)
         {
             this.userID = id;
             this.primeiroNome = pN;
