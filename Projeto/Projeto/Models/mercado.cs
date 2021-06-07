@@ -13,12 +13,12 @@ namespace Projeto.Models
 {
     public class Mercado
     {
-        public int mercadoID{ get; set; }
+        public string mercadoID{ get; set; }
         public string pais{ get; set; }
         public string nome{ get; set; }
 
         public Mercado (){  }
-        public Mercado (int mid, string pais, string nome)
+        public Mercado (string mid, string pais, string nome)
         {
             this.mercadoID = mid;
             this.pais = pais;

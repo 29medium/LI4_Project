@@ -25,14 +25,14 @@ namespace Projeto.DataAccess
 				"(primeiro_nome,ultimo_nome,user_name,password,email,experiencia,capacidade,localizacao) " +
                 "VALUES(@primeiro_nome, @ultimo_nome, @user_name, @password, @email, @experiencia, @capacidade, @localizacao)", Con);
 
-            Cmd.Parameters.Add("@primeiro_nome", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@ultimo_nome", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@user_name", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@password", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@email", System.Data.SqlDbType.Text);
+            Cmd.Parameters.Add("@primeiro_nome", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters.Add("@ultimo_nome", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters.Add("@user_name", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters.Add("@password", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters.Add("@email", System.Data.SqlDbType.VarChar);
             Cmd.Parameters.Add("@experiencia", System.Data.SqlDbType.Int);
             Cmd.Parameters.Add("@capacidade", System.Data.SqlDbType.Float);
-            Cmd.Parameters.Add("@localizacao", System.Data.SqlDbType.Text);
+            Cmd.Parameters.Add("@localizacao", System.Data.SqlDbType.VarChar);
 
             Cmd.Parameters["@primeiro_nome"].Value = u.primeiroNome;
             Cmd.Parameters["@ultimo_nome"].Value = u.ultimoNome;

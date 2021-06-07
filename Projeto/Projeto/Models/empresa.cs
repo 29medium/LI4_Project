@@ -17,19 +17,17 @@ namespace Projeto.Models
         public string nome{ get; set; }
         public string categoria{ get; set; }
         public string website{get; set; }
-        public float coordX{ get; set; }
-        public float coordY{ get; set; }
-        public int mercadoID{ get; set; }
+        public string localizacao { get; set; }
+        public string mercadoID{ get; set; }
 
         public Empresa() { }
-        public Empresa(int eid, string nome, string cat, string website, float x, float y, int mid)
+        public Empresa(int eid, string nome, string cat, string website, string localizacao, string mid)
         {
             this.empresaID = eid;
             this.nome = nome;
             this.categoria = cat;
             this.website = website;
-            this.coordX = x;
-            this.coordY = y;
+            this.localizacao = localizacao;
             this.mercadoID = mid;
         }
     }

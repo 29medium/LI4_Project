@@ -34,46 +34,5 @@ namespace Projeto.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        public ActionResult Login()
-        {
-            return View("Login");
-        }
-
-        [HttpPost]
-        public ActionResult Login(LogInModel model)
-        {
-            UtilizadorDAO dAO = new UtilizadorDAO();
-            bool id = dAO.Login(model.Username, model.Password);
-
-            if (id)
-                ViewBag.SuccessMessage = "Login Successful";
-            else
-                ViewBag.DuplicateMessage = "Username already exists!";
-
-            return View("Index");
-        }
-
-        public ActionResult Registration()
-        {
-            return View("Registration");
-        }
-
-        [HttpPost]
-        public ActionResult Registration(CreateModel model)
-        {
-            Utilizador u = new Utilizador(-1, model.PrimeiroNome, model.UltimoNome, model.Username, Utilizador.HashPassword(model.Password),
-                                             model.Email, model.Experiencia, model.CapacidadeMonetaria, model.Localizacao);
-            UtilizadorDAO dAO = new UtilizadorDAO();
-
-            bool val = dAO.Insert(u);
-
-            if (val)
-                ViewBag.SuccessMessage = "Registation Successful";
-            else
-                ViewBag.DuplicateMessage = "Username already exists!";
-
-            return View("Index");
-        }
     }
 }

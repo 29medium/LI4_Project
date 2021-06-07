@@ -17,27 +17,24 @@ namespace Projeto.DataAccess
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("INSERT INTO Empresa " +
-                "(EmpresaID,Nome,Categoria,Website,CoordX,CoordY,MercadoID) " +
-                "VALUES(@EmpresaID, @Nome, @Categoria,@Website, @CoordX, @CoordY, @MercadoID)", Con);
+                "(empresa_id,nome,categoria,website,localizacao,mercado_codigo) " +
+                "VALUES(@empresa_id, @nome, @categoria,@website, @localizacao, @mercado_codigo)", Con);
 
             // create your parameters
-            Cmd.Parameters.Add("@EmpresaID", System.Data.SqlDbType.Int);
-            Cmd.Parameters.Add("@Nome", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@Categoria", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@Website", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@CoordX", System.Data.SqlDbType.Float);
-            Cmd.Parameters.Add("@CoordY", System.Data.SqlDbType.Float);
-            Cmd.Parameters.Add("@MercadoID", System.Data.SqlDbType.Int);
-
+            Cmd.Parameters.Add("@empresa_id", System.Data.SqlDbType.Int);
+            Cmd.Parameters.Add("@nome", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters.Add("@categoria", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters.Add("@website", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters.Add("@localizacao", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters.Add("@mercado_codigo", System.Data.SqlDbType.VarChar);
 
             // set values to parameters from textboxes
-            Cmd.Parameters["@EmpresaID"].Value = e.empresaID;
-            Cmd.Parameters["@Nome"].Value = e.nome;
-            Cmd.Parameters["@Categoria"].Value = e.categoria;
-            Cmd.Parameters["@Website"].Value = e.categoria;
-            Cmd.Parameters["@CoordX"].Value = e.coordX;
-            Cmd.Parameters["@CoordY"].Value = e.coordY;
-            Cmd.Parameters["@MercadoID"].Value = e.mercadoID;
+            Cmd.Parameters["@empresa_id"].Value = e.empresaID;
+            Cmd.Parameters["@nome"].Value = e.nome;
+            Cmd.Parameters["@categoria"].Value = e.categoria;
+            Cmd.Parameters["@website"].Value = e.categoria;
+            Cmd.Parameters["@localizacao"].Value = e.localizacao;
+            Cmd.Parameters["@mercado_codigo"].Value = e.mercadoID;
 
             Con.Open();
 
@@ -53,11 +50,11 @@ namespace Projeto.DataAccess
         {
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand("SELECT * FROM Empresa WHERE EmpresaID = @EmpresaID", Con);
+            SqlCommand Cmd = new SqlCommand("SELECT * FROM Empresa WHERE empresa_id = @empresa_id", Con);
 
             Con.Open();
-            Cmd.Parameters.Add("@EmpresaID", System.Data.SqlDbType.Int);
-            Cmd.Parameters["@EmpresaID"].Value = empresaID;
+            Cmd.Parameters.Add("@empresa_id", System.Data.SqlDbType.Int);
+            Cmd.Parameters["@empresa_id"].Value = empresaID;
 
             Empresa e = new Empresa();
 
@@ -65,12 +62,11 @@ namespace Projeto.DataAccess
             if (reader.Read())
             {
                 e.empresaID = empresaID;
-                e.nome = reader["Nome"].ToString();
-                e.categoria = reader["Categoria"].ToString();
-                e.coordX = reader.GetFloat("CoordX");
-                e.coordY = reader.GetFloat("CoordY");
-                e.mercadoID = reader.GetInt32("MercadoID");
-                e.website = reader["Website"].ToString();
+                e.nome = reader["nome"].ToString();
+                e.categoria = reader["categoria"].ToString();
+                e.localizacao = reader["localizacao"].ToString();
+                e.mercadoID = reader["mercado_codigo"].ToString();
+                e.website = reader["website"].ToString();
             }
             else
             {
@@ -86,14 +82,14 @@ namespace Projeto.DataAccess
             List<String> empresas = new List<String>();
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand("SELECT Nome FROM Empresa", Con);
+            SqlCommand Cmd = new SqlCommand("SELECT nome FROM Empresa", Con);
 
             Con.Open();
 
             SqlDataReader reader = Cmd.ExecuteReader();
             while (reader.Read())
             {
-                empresas.Add(reader["Nome"].ToString());
+                empresas.Add(reader["nome"].ToString());
             }
 
             Con.Close();
@@ -106,17 +102,17 @@ namespace Projeto.DataAccess
             List<String> empresas = new List<String>();
             SqlConnection Con = new SqlConnection("MyConnectionString");
             // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand("SELECT Nome FROM Empresa WHERE mercadoID = @mercadoID", Con);
+            SqlCommand Cmd = new SqlCommand("SELECT nome FROM Empresa WHERE mercado_codigo = @mercado_codigo", Con);
 
-            Cmd.Parameters.Add("@MercadoID", System.Data.SqlDbType.Int);
-            Cmd.Parameters["@MercadoID"].Value = mercado;
+            Cmd.Parameters.Add("@mercado_codigo", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters["@mercado_codigo"].Value = mercado;
 
             Con.Open();
 
             SqlDataReader reader = Cmd.ExecuteReader();
             while (reader.Read())
             {
-                empresas.Add(reader["Nome"].ToString());
+                empresas.Add(reader["nome"].ToString());
             }
 
             Con.Close();
@@ -124,22 +120,22 @@ namespace Projeto.DataAccess
             return empresas;
         }
 
-        public List<String> listaEmpresasMercado(string cat)
+        public List<String> listaEmpresasCategoria(string cat)
         {
             List<String> empresas = new List<String>();
             SqlConnection Con = new SqlConnection("MyConnectionString");
             // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand("SELECT Nome FROM Empresa WHERE categoria = @categoria", Con);
+            SqlCommand Cmd = new SqlCommand("SELECT nome FROM Empresa WHERE categoria = @categoria", Con);
 
-            Cmd.Parameters.Add("@Categoria", System.Data.SqlDbType.Text);
-            Cmd.Parameters["@Categoria"].Value = cat;
+            Cmd.Parameters.Add("@categoria", System.Data.SqlDbType.Text);
+            Cmd.Parameters["@categoria"].Value = cat;
 
             Con.Open();
 
             SqlDataReader reader = Cmd.ExecuteReader();
             while (reader.Read())
             {
-                empresas.Add(reader["Nome"].ToString());
+                empresas.Add(reader["nome"].ToString());
             }
 
             Con.Close();

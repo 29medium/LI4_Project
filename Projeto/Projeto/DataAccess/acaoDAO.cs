@@ -19,24 +19,24 @@ namespace Projeto.DataAccess
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("INSERT INTO Acao " +
-                "(AcaoID,Hora,Low,High,Avg,EmpresaID) " +
-                "VALUES(@AcaoID, @Hora, @Low,@High,@Avg,@EmpresaID)", Con);
+                "(codigo,hora,low,high,avg,empresa_id) " +
+                "VALUES(@codigo, @hora, @low,@high,@avg,@empresa_id)", Con);
 
             // create your parameters
-            Cmd.Parameters.Add("@AcaoID", System.Data.SqlDbType.Int);
-            Cmd.Parameters.Add("@Hora", System.Data.SqlDbType.DateTime);
-            Cmd.Parameters.Add("@Low", System.Data.SqlDbType.Float);
-            Cmd.Parameters.Add("@High", System.Data.SqlDbType.Float);
-            Cmd.Parameters.Add("@Avg", System.Data.SqlDbType.Float);
-            Cmd.Parameters.Add("@EmpresaID", System.Data.SqlDbType.Int);
+            Cmd.Parameters.Add("@codigo", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters.Add("@hora", System.Data.SqlDbType.DateTime);
+            Cmd.Parameters.Add("@low", System.Data.SqlDbType.Float);
+            Cmd.Parameters.Add("@high", System.Data.SqlDbType.Float);
+            Cmd.Parameters.Add("@avg", System.Data.SqlDbType.Float);
+            Cmd.Parameters.Add("@empreda_id", System.Data.SqlDbType.Int);
 
             // set values to parameters from textboxes
-            Cmd.Parameters["@AcaoID"].Value = a.acaoID;
-            Cmd.Parameters["@Hora"].Value = a.hora;
-            Cmd.Parameters["@Low"].Value = a.low;
-            Cmd.Parameters["@High"].Value = a.high;
-            Cmd.Parameters["@Avg"].Value = a.avg;
-            Cmd.Parameters["@EmpresaID"].Value = a.empresaID;
+            Cmd.Parameters["@codigo"].Value = a.acaoID;
+            Cmd.Parameters["@hora"].Value = a.hora;
+            Cmd.Parameters["@low"].Value = a.low;
+            Cmd.Parameters["@high"].Value = a.high;
+            Cmd.Parameters["@avg"].Value = a.avg;
+            Cmd.Parameters["@empresa_id"].Value = a.empresaID;
 
             Con.Open();
 
@@ -52,11 +52,11 @@ namespace Projeto.DataAccess
         {
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand("SELECT * FROM Acao WHERE AcaoID = @AcaoID", Con);
+            SqlCommand Cmd = new SqlCommand("SELECT * FROM Acao WHERE codigo = @codigo", Con);
 
             Con.Open();
-            Cmd.Parameters.Add("@AcaoID", System.Data.SqlDbType.Int);
-            Cmd.Parameters["@AcaoID"].Value = acaoID;
+            Cmd.Parameters.Add("@codigo", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters["@codigo"].Value = acaoID;
 
             Acao a = new Acao();
 
@@ -64,10 +64,10 @@ namespace Projeto.DataAccess
             if (reader.Read())
             {
                 a.acaoID = acaoID;
-                a.hora = DateTime.Parse(reader["Hora"].ToString());
-                a.low = reader.GetFloat("Low");
-                a.high = reader.GetFloat("Low");
-                a.avg = reader.GetFloat("Avg");
+                a.hora = DateTime.Parse(reader["hora"].ToString());
+                a.low = reader.GetFloat("low");
+                a.high = reader.GetFloat("high");
+                a.avg = reader.GetFloat("avg");
             }
             else
             {
@@ -76,6 +76,15 @@ namespace Projeto.DataAccess
             Con.Close();
 
             return a;
+        }
+
+        public List<Acao> getAll()
+        {
+            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            // create command object with SQL query and link to connection object
+            SqlCommand Cmd = new SqlCommand("SELECT * FROM Acao", Con);
+
+            return null;
         }
     }
 }

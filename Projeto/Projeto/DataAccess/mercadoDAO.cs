@@ -16,16 +16,16 @@ namespace Projeto.DataAccess
     		// create sql connection object.  Be sure to put a valid connection string
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             SqlCommand Cmd = new SqlCommand("INSERT INTO Mercado " +
-				"(MercadoID,Pais,Nome) " +
-                "VALUES(@MercadoID, @Pais, @Nome)", Con);
+				"(codigo,pais,nome) " +
+                "VALUES(@codigo, @pais, @nome)", Con);
 
-            Cmd.Parameters.Add("@MercadoID", System.Data.SqlDbType.Int);
-            Cmd.Parameters.Add("@Pais", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@Nome", System.Data.SqlDbType.Text);
+            Cmd.Parameters.Add("@codigo", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters.Add("@pais", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters.Add("@nome", System.Data.SqlDbType.VarChar);
 
-            Cmd.Parameters["@MercadoID"].Value = m.mercadoID;
-            Cmd.Parameters["@Pais"].Value = m.pais;
-            Cmd.Parameters["@Nome"].Value = m.nome;
+            Cmd.Parameters["@codigo"].Value = m.mercadoID;
+            Cmd.Parameters["@pais"].Value = m.pais;
+            Cmd.Parameters["@nome"].Value = m.nome;
 
             Con.Open();
 
@@ -36,21 +36,21 @@ namespace Projeto.DataAccess
             return Convert.ToBoolean(RowsAffected);
     	}
 
-        public Mercado get(int mercadoID) {
+        public Mercado get(string mercadoID) {
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
-            SqlCommand Cmd = new SqlCommand("SELECT * FROM Mercado WHERE MercadoID = @MercadoID", Con);
+            SqlCommand Cmd = new SqlCommand("SELECT * FROM Mercado WHERE codigo = @codigo", Con);
 
             Con.Open();
-            Cmd.Parameters.Add("@MercadoID", System.Data.SqlDbType.Int);
-            Cmd.Parameters["@MercadoID"].Value = mercadoID;
+            Cmd.Parameters.Add("@codigo", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters["@codigo"].Value = mercadoID;
 
             Mercado m = new Mercado();
 
             SqlDataReader reader = Cmd.ExecuteReader();
             if(reader.Read()){
                 m.mercadoID = mercadoID;
-                m.nome = reader["Nome"].ToString();
-                m.pais = reader["Pais"].ToString();
+                m.nome = reader["nome"].ToString();
+                m.pais = reader["pais"].ToString();
             }
             else {
                 m = null;
