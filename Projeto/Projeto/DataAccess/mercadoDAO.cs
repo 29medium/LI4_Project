@@ -14,7 +14,7 @@ namespace Projeto.DataAccess
     {
     	public bool Insert(Mercado m) {
     		// create sql connection object.  Be sure to put a valid connection string
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             SqlCommand Cmd = new SqlCommand("INSERT INTO Mercado " +
 				"(codigo,pais,nome) " +
                 "VALUES(@codigo, @pais, @nome)", Con);
@@ -37,7 +37,7 @@ namespace Projeto.DataAccess
     	}
 
         public Mercado get(string mercadoID) {
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             SqlCommand Cmd = new SqlCommand("SELECT * FROM Mercado WHERE codigo = @codigo", Con);
 
             Con.Open();
@@ -63,7 +63,7 @@ namespace Projeto.DataAccess
         public List<Mercado> listaMercado()
         {
             List<Mercado> mercados = new List<Mercado>();
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT * FROM Mercado", Con);
 

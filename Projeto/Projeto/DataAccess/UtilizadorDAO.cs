@@ -13,12 +13,12 @@ namespace Projeto.DataAccess
     public class UtilizadorDAO
     {
     	public bool Insert(Utilizador u) {
-
+            /*
             Utilizador flag = get(u.userID);
 
             if(flag == null)
                 return false;
-
+            */
             // create sql connection object.  Be sure to put a valid connection string
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;"); 
             SqlCommand Cmd = new SqlCommand("INSERT INTO Utilizador " +
@@ -86,7 +86,7 @@ namespace Projeto.DataAccess
         }
 
         public bool Login(string user,string pass) {
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT user_name, password FROM[Utilizador] WHERE user_name = @user_name AND password = @password", Con);
 
@@ -107,7 +107,7 @@ namespace Projeto.DataAccess
         /*
         public bool adicionaHistorico(int userID,string hist) {
 
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("INSERT INTO Historico " +
                 "(UserID,Pesquisa) " +
@@ -130,7 +130,7 @@ namespace Projeto.DataAccess
 
         public bool adicionaPreferencia(int userID,string pref) {
 
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("INSERT INTO Favoritos " +
                 "(UserID,EmpresaID) " +
@@ -152,7 +152,7 @@ namespace Projeto.DataAccess
 
         public List<String> Historico(int userID) {
             List<String> historico = new List<String>();
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT Empresa.Nome FROM Historico WHERE UserID = @UserID" + 
                                             " INNER JOIN Empresa WHERE Empresa.EmpresaID = Historico.EmpresaID", Con);
@@ -174,7 +174,7 @@ namespace Projeto.DataAccess
 
         public List<String> Favoritos(int userID) {
             List<String> favoritos = new List<String>();
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT Empresa.Nome FROM Favoritos WHERE UserID = @UserID" + 
                                             " INNER JOIN Empresa WHERE Empresa.EmpresaID = Historico.EmpresaID", Con);

@@ -13,7 +13,7 @@ namespace Projeto.Models
 {
     public class Empresa
     {
-        public int empresaID{ get; set; }
+        public string empresaID{ get; set; }
         public string nome{ get; set; }
         public string categoria{ get; set; }
         public string website{get; set; }
@@ -21,7 +21,7 @@ namespace Projeto.Models
         public string mercadoID{ get; set; }
 
         public Empresa() { }
-        public Empresa(int eid, string nome, string cat, string website, string localizacao, string mid)
+        public Empresa(string eid, string nome, string cat, string website, string localizacao, string mid)
         {
             this.empresaID = eid;
             this.nome = nome;

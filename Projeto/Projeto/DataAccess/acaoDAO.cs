@@ -16,7 +16,7 @@ namespace Projeto.DataAccess
         public bool Insert(Acao a)
         {
             // create sql connection object.  Be sure to put a valid connection string
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("INSERT INTO Acao " +
                 "(codigo,hora,low,high,avg,empresa_id) " +
@@ -50,7 +50,7 @@ namespace Projeto.DataAccess
 
         public Acao get(string acaoID)
         {
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT * FROM Acao WHERE codigo = @codigo", Con);
 
@@ -65,10 +65,10 @@ namespace Projeto.DataAccess
             {
                 a.acaoID = acaoID;
                 a.hora = DateTime.Parse(reader["hora"].ToString());
-                a.low = reader.GetFloat("low");
-                a.high = reader.GetFloat("high");
-                a.avg = reader.GetFloat("avg");
-                a.empresaID = reader.GetFloat("empresaID");
+                a.low = reader.GetDouble("low");
+                a.high = reader.GetDouble("high");
+                a.avg = reader.GetDouble("avg");
+                a.empresaID = reader["empresaID"].ToString();
             }
             else
             {
@@ -82,7 +82,7 @@ namespace Projeto.DataAccess
         public List<Acao> listaAcao()
         {
             List<Acao> acoes = new List<Acao>();
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT * FROM Acao", Con);
 
@@ -95,9 +95,9 @@ namespace Projeto.DataAccess
 
                 a.acaoID = reader["codigo"].ToString();
                 a.hora = reader.GetDateTime("hora");
-                a.high = reader.GetFloat("high");
-                a.low = reader.GetFloat("low");
-                a.avg = reader.GetFloat("avg");
+                a.high = reader.GetDouble("high");
+                a.low = reader.GetDouble("low");
+                a.avg = reader.GetDouble("avg");
                 a.empresaID = reader["empresa_id"].ToString();
 
                 acoes.Add(a);

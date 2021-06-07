@@ -26,7 +26,7 @@ namespace Projeto.Controllers
             else
                 ViewBag.DuplicateMessage = "Username already exists!";
 
-            return new RedirectResult("Home/Index", false);
+            return Redirect("~/");
         }
 
         public ActionResult Registration()

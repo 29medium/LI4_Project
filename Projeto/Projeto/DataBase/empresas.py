@@ -22,7 +22,7 @@ for line in content:
  else:
   mercado = "Dow Jones"
  
- empresas.write("INSERT INTO EMPRESA " +
+ empresas.write("INSERT INTO Empresa " +
 "(empresa_id,nome,categoria,website,localizacao,mercado_codigo) " +
 "VALUES(\'" + symbol + "\',\'" + name + "\',\'" + type + "\',\'" + "webSite" + "\',\'" + country + "\',\'" + mercado +"\');\n")
 

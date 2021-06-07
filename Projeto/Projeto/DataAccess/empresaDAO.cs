@@ -14,7 +14,7 @@ namespace Projeto.DataAccess
         public bool Insert(Empresa e)
         {
             // create sql connection object.  Be sure to put a valid connection Text
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("INSERT INTO Empresa " +
                 "(empresa_id,nome,categoria,website,localizacao,mercado_codigo) " +
@@ -48,7 +48,7 @@ namespace Projeto.DataAccess
 
         public Empresa get(string empresaID)
         {
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT * FROM Empresa WHERE empresa_id = @empresa_id", Con);
 
@@ -80,7 +80,7 @@ namespace Projeto.DataAccess
         public List<Empresa> listaEmpresas()
         {
             List<Empresa> empresas = new List<Empresa>();
-            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT * FROM Empresa", Con);
 
@@ -90,8 +90,8 @@ namespace Projeto.DataAccess
             while (reader.Read())
             {
                 Empresa e = new Empresa();
-                e.empresaID = reader["empresaID"].ToString();
 
+                e.empresaID = reader["empresa_id"].ToString();
                 e.nome = reader["nome"].ToString();
                 e.categoria = reader["categoria"].ToString();
                 e.localizacao = reader["localizacao"].ToString();
@@ -109,7 +109,7 @@ namespace Projeto.DataAccess
         public List<Empresa> listaEmpresasMercado(int mercado)
         {
             List<Empresa> empresas = new List<Empresa>();
-            SqlConnection Con = new SqlConnection("MyConnectionString");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT * FROM Empresa WHERE mercado_codigo = @mercado_codigo", Con);
 
@@ -122,7 +122,7 @@ namespace Projeto.DataAccess
             while (reader.Read())
             {
                 Empresa e = new Empresa();
-                e.empresaID = reader["empresaID"].ToString();
+                e.empresaID = reader["empresa_id"].ToString();
                 e.nome = reader["nome"].ToString();
                 e.categoria = reader["categoria"].ToString();
                 e.localizacao = reader["localizacao"].ToString();
@@ -140,7 +140,7 @@ namespace Projeto.DataAccess
         public List<Empresa> listaEmpresasCategoria(string cat)
         {
             List<Empresa> empresas = new List<Empresa>();
-            SqlConnection Con = new SqlConnection("MyConnectionString");
+            SqlConnection Con = new SqlConnection("Server=.;Database=SmartInvest;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT * FROM Empresa WHERE categoria = @categoria", Con);
 
@@ -153,7 +153,7 @@ namespace Projeto.DataAccess
             while (reader.Read())
             {
                 Empresa e = new Empresa();
-                e.empresaID = reader["empresaID"].ToString();
+                e.empresaID = reader["empresa_id"].ToString();
                 e.nome = reader["nome"].ToString();
                 e.categoria = reader["categoria"].ToString();
                 e.localizacao = reader["localizacao"].ToString();
