@@ -1,0 +1,440 @@
+81:{6 items
+"symbol":"SON"
+"name":"Sonae, SGPS, S.A."
+"currency":"EUR"
+"exchange":"Euronext"
+"country":"Portugal"
+"type":"EQUITY"
+}
+5:{6 items
+"symbol":"BCP"
+"name":"Banco Comercial Português, S.A."
+"currency":"EUR"
+"exchange":"Euronext"
+"country":"Portugal"
+"type":"EQUITY"
+}
+10:{6 items
+"symbol":"BKESY"
+"name":"Banco Espirto Santo E"
+"currency":"USD"
+"exchange":"OTC"
+"country":"Portugal"
+"type":"American Depositary Receipt"
+}
+18:{6 items
+"symbol":"BSLBA"
+"name":"SLB 3,75% 20MAY22"
+"currency":"EUR"
+"exchange":"Euronext"
+"country":"Portugal"
+"type":"EQUITY"
+}
+17:{6 items
+"symbol":"BSINA"
+"name":"SIC 4,5% 11JUL22"
+"currency":"EUR"
+"exchange":"Euronext"
+"country":"Portugal"
+"type":"EQUITY"
+}
+16:{6 items
+"symbol":"BSCPH"
+"name":"SCP 5,25% 26NOV21"
+"currency":"EUR"
+"exchange":"Euronext"
+"country":"Portugal"
+"type":"EQUITY"
+}
+29:{6 items
+"symbol":"EDP"
+"name":"EDP - Energias de Portugal, S.A."
+"currency":"EUR"
+"exchange":"Euronext"
+"country":"Portugal"
+"type":"EQUITY"
+}
+36:{6 items
+"symbol":"GALP"
+"name":"Galp Energia, SGPS, S.A."
+"currency":"EUR"
+"exchange":"Euronext"
+"country":"Portugal"
+"type":"EQUITY"
+}
+45:{6 items
+"symbol":"JRONY"
+"name":"Jeronimo Martins, SGPS, SA"
+"currency":"USD"
+"exchange":"OTC"
+"country":"Portugal"
+"type":"American Depositary Receipt"
+}
+58:{6 items
+"symbol":"OTEO"
+"name":"Portugal 4.95% SNR BDS 25/10/2023 EUR0.01 'REGS'"
+"currency":"EUR"
+"exchange":"Euronext"
+"country":"Portugal"
+"type":"EQUITY"
+}
+73:{6 items
+"symbol":"RENE"
+"name":"REN - Redes Energéticas Nacionais, SGPS, S.A."
+"currency":"EUR"
+"exchange":"Euronext"
+"country":"Portugal"
+"type":"EQUITY"
+}
+76:{6 items
+"symbol":"SCT"
+"name":"Toyota Caetano Portugal, S.A."
+"currency":"EUR"
+"exchange":"Euronext"
+"country":"Portugal"
+"type":"EQUITY"
+}
+80:{6 items
+"symbol":"SNG"
+"name":"Sonagi, S.G.P.S., S.A."
+"currency":"EUR"
+"exchange":"Euronext"
+"country":"Portugal"
+"type":"EQUITY"
+}
+85:{6 items
+"symbol":"ZONNF"
+"name":"Nos SGPS SA"
+"currency":"USD"
+"exchange":"OTC"
+"country":"Portugal"
+"type":"Common Stock"
+}
+0:{6 items
+"symbol":"AACG"
+"name":"ATA Creativity Global"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Depositary Receipt"
+}
+1:{6 items
+"symbol":"AACG"
+"name":"ATA Creativity Global"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+2:{6 items
+"symbol":"AACQ"
+"name":"Artius Acquisition Inc."
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+3:{6 items
+"symbol":"AAL"
+"name":"American Airlines Group Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+4:{6 items
+"symbol":"AAME"
+"name":"Atlantic American Corporation"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+5:{6 items
+"symbol":"AAME"
+"name":"Atlantic American Corp"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+6:{6 items
+"symbol":"AAOI"
+"name":"Applied Optoelectronics Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+7:{6 items
+"symbol":"AAOI"
+"name":"Applied Optoelectronics, Inc."
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+8:{6 items
+"symbol":"AAON"
+"name":"AAON Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+9:{6 items
+"symbol":"AAPL"
+"name":"Apple Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+10:{6 items
+"symbol":"AAWW"
+"name":"Atlas Air Worldwide Holdings Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+11:{6 items
+"symbol":"AAXN"
+"name":"Axon Enterprise Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+12:{6 items
+"symbol":"ABCB"
+"name":"Ameris Bancorp"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+13:{6 items
+"symbol":"ABCL"
+"name":"AbCellera Biologics Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"Common Stock"
+}
+14:{6 items
+"symbol":"ABCM"
+"name":"Abcam PLC"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"American Depositary Receipt"
+}
+15:{6 items
+"symbol":"ABEO"
+"name":"Abeona Therapeutics Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+16:{6 items
+"symbol":"ABEO"
+"name":"Abeona Therapeutics Inc."
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+17:{6 items
+"symbol":"ABGI"
+"name":"ABG Acquisition Corp. I"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+18:{6 items
+"symbol":"ABIO"
+"name":"ARCA biopharma, Inc."
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+19:{6 items
+"symbol":"ABIO"
+"name":"ARCA biopharma Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+20:{6 items
+"symbol":"ABMD"
+"name":"ABIOMED Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+21:{6 items
+"symbol":"ABNB"
+"name":"Airbnb, Inc."
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+22:{6 items
+"symbol":"ABST"
+"name":"Absolute Software Corporation"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+23:{6 items
+"symbol":"ABTX"
+"name":"Allegiance Bancshares Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+24:{6 items
+"symbol":"ABUS"
+"name":"Arbutus Biopharma Corp"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+25:{6 items
+"symbol":"ACAC"
+"name":"Acies Acquisition Corp."
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+26:{6 items
+"symbol":"ACAC"
+"name":"Acies Acquisition Corp."
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+27:{6 items
+"symbol":"ACAD"
+"name":"ACADIA Pharmaceuticals Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+28:{6 items
+"symbol":"ACAH"
+"name":"Atlantic Coastal Acquisition Corp."
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+29:{6 items
+"symbol":"ACAM"
+"name":"Acamar Partners Acquisition Corp"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+30:{6 items
+"symbol":"ACAMU"
+"name":"Acamar Partners Acquisition Corp"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Unit"
+}
+31:{6 items
+"symbol":"ACBA"
+"name":"Ace Global Business Acquisition Limited"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+32:{6 items
+"symbol":"ACBI"
+"name":"Atlantic Capital Bancshares Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+33:{6 items
+"symbol":"ACCD"
+"name":"Accolade Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"Common Stock"
+}
+34:{6 items
+"symbol":"ACER"
+"name":"Acer Therapeutics Inc"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+35:{6 items
+"symbol":"ACER"
+"name":"Acer Therapeutics Inc."
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+36:{6 items
+"symbol":"ACET"
+"name":"Adicet Bio, Inc."
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}
+37:{6 items
+"symbol":"ACET"
+"name":"Adicet Bio, Inc."
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+38:{6 items
+"symbol":"ACEV"
+"name":"ACE Convergence Acquisition Corp."
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"EQUITY"
+}
+39:{6 items
+"symbol":"ACEV"
+"name":"ACE Convergence Acquisition Corp"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States of America"
+"type":"Common Stock"
+}
+40:{6 items
+"symbol":"ACGL"
+"name":"Arch Capital Group Ltd"
+"currency":"USD"
+"exchange":"NASDAQ"
+"country":"United States"
+"type":"Common Stock"
+}

@@ -28,7 +28,7 @@ namespace Projeto.DataAccess
             Cmd.Parameters.Add("@low", System.Data.SqlDbType.Float);
             Cmd.Parameters.Add("@high", System.Data.SqlDbType.Float);
             Cmd.Parameters.Add("@avg", System.Data.SqlDbType.Float);
-            Cmd.Parameters.Add("@empreda_id", System.Data.SqlDbType.Int);
+            Cmd.Parameters.Add("@empreda_id", System.Data.SqlDbType.VarChar);
 
             // set values to parameters from textboxes
             Cmd.Parameters["@codigo"].Value = a.acaoID;
@@ -68,6 +68,7 @@ namespace Projeto.DataAccess
                 a.low = reader.GetFloat("low");
                 a.high = reader.GetFloat("high");
                 a.avg = reader.GetFloat("avg");
+                a.empresaID = reader.GetFloat("empresaID");
             }
             else
             {
@@ -97,7 +98,7 @@ namespace Projeto.DataAccess
                 a.high = reader.GetFloat("high");
                 a.low = reader.GetFloat("low");
                 a.avg = reader.GetFloat("avg");
-                a.empresaID = reader.GetInt32("empresa_id");
+                a.empresaID = reader["empresa_id"].ToString();
 
                 acoes.Add(a);
             }

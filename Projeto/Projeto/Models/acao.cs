@@ -18,10 +18,10 @@ namespace Projeto.Models
         public float low{ get; set; }
         public float high{ get; set; }
         public float avg{ get; set; }
-        public int empresaID{ get; set; }
+        public string empresaID{ get; set; }
 
         public Acao(){ }
-        public Acao(string aid, DateTime hora, float low, float high, float avg, int eid)
+        public Acao(string aid, DateTime hora, float low, float high, float avg, string eid)
         {
             this.acaoID = aid;
             this.hora = hora;
