@@ -21,7 +21,7 @@ namespace Projeto.DataAccess
                 "VALUES(@empresa_id, @nome, @categoria,@website, @localizacao, @mercado_codigo)", Con);
 
             // create your parameters
-            Cmd.Parameters.Add("@empresa_id", System.Data.SqlDbType.Int);
+            Cmd.Parameters.Add("@empresa_id", System.Data.SqlDbType.VarChar);
             Cmd.Parameters.Add("@nome", System.Data.SqlDbType.VarChar);
             Cmd.Parameters.Add("@categoria", System.Data.SqlDbType.VarChar);
             Cmd.Parameters.Add("@website", System.Data.SqlDbType.VarChar);
@@ -46,14 +46,14 @@ namespace Projeto.DataAccess
             return Convert.ToBoolean(RowsAffected);
         }
 
-        public Empresa get(int empresaID)
+        public Empresa get(string empresaID)
         {
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT * FROM Empresa WHERE empresa_id = @empresa_id", Con);
 
             Con.Open();
-            Cmd.Parameters.Add("@empresa_id", System.Data.SqlDbType.Int);
+            Cmd.Parameters.Add("@empresa_id", System.Data.SqlDbType.VarChar);
             Cmd.Parameters["@empresa_id"].Value = empresaID;
 
             Empresa e = new Empresa();
@@ -90,6 +90,7 @@ namespace Projeto.DataAccess
             while (reader.Read())
             {
                 Empresa e = new Empresa();
+                e.empresaID = reader["empresaID"].ToString();
 
                 e.nome = reader["nome"].ToString();
                 e.categoria = reader["categoria"].ToString();
@@ -121,7 +122,7 @@ namespace Projeto.DataAccess
             while (reader.Read())
             {
                 Empresa e = new Empresa();
-
+                e.empresaID = reader["empresaID"].ToString();
                 e.nome = reader["nome"].ToString();
                 e.categoria = reader["categoria"].ToString();
                 e.localizacao = reader["localizacao"].ToString();
@@ -152,7 +153,7 @@ namespace Projeto.DataAccess
             while (reader.Read())
             {
                 Empresa e = new Empresa();
-
+                e.empresaID = reader["empresaID"].ToString();
                 e.nome = reader["nome"].ToString();
                 e.categoria = reader["categoria"].ToString();
                 e.localizacao = reader["localizacao"].ToString();
