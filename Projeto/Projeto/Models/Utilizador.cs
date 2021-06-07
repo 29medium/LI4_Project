@@ -21,12 +21,10 @@ namespace Projeto.Models
         public string email{ get; set; }
         public int experiencia{ get; set; }
         public float capacidadeMonetaria{ get; set; }
-        public string areaInteresse{ get; set; }
-        public float coordX{ get; set; }
-        public float coordY{ get; set; }
+        public string localizacao { get; set; }
 
         public Utilizador() { }
-        public Utilizador(int id,string pN,string uN,string username,string pass,string email,int exp, float capMon, string ai, float x, float y)
+        public Utilizador(int id,string pN,string uN,string username,string pass,string email,int exp, float capMon, string localizacao)
         {
             this.userID = id;
             this.primeiroNome = pN;
@@ -36,9 +34,7 @@ namespace Projeto.Models
             this.email = email;
             this.experiencia = exp;
             this.capacidadeMonetaria = capMon;
-            this.areaInteresse = ai;
-            this.coordX = x;
-            this.coordY = y;
+            this.localizacao = localizacao;
         }
 
         private static string GetMd5Hash(MD5 md5Hash,string input)
@@ -82,31 +78,24 @@ namespace Projeto.Models
 
         [Required]
         [Display(Name = "primeiroNome")]
-        public string Name { get; set; }
+        public string PrimeiroNome { get; set; }
 
         [Required]
         [Display(Name = "ultimoNome")]
-        public string Name { get; set; }
+        public string UltimoNome { get; set; }
 
         [Required]
         [Display(Name = "experiencia")]
-        public int Name { get; set; }
+        public int Experiencia { get; set; }
 
         [Required]
         [Display(Name = "capacidadeMonetaria")]
-        public float Name { get; set; }
+        public float CapacidadeMonetaria { get; set; }
 
         [Required]
-        [Display(Name = "areaInteresse")]
-        public string Name { get; set; }
+        [Display(Name = "localizacao")]
+        public string Localizacao { get; set; }
 
-        [Required]
-        [Display(Name = "coordX")]
-        public float Name { get; set; }
-
-        [Required]
-        [Display(Name = "coordY")]
-        public float Name { get; set; }
     }
 
     public class LogInModel

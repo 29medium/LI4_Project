@@ -1,0 +1,56 @@
+﻿@model Projeto.Models.CreateModel
+
+@using (Html.BeginForm())
+{
+    <div class="field" style="max-width:30%">
+        @Html.LabelFor(model => model.Username, null)
+        @Html.EditorFor(model => model.Username, null)
+        @Html.ValidationMessageFor(model => model.Username, "", null)
+    </div>
+
+    <div class="field" style="max-width:30%">
+        @Html.LabelFor(model => model.Password, null)
+        @Html.EditorFor(model => model.Password, null)
+        @Html.ValidationMessageFor(model => model.Password, "", null)
+    </div>
+
+    <div class="field" style="max-width:30%">
+        @Html.LabelFor(model => model.Email, null)
+        @Html.EditorFor(model => model.Email, null)
+        @Html.ValidationMessageFor(model => model.Email, "", null)
+    </div>
+
+    <div class="field" style="max-width:30%">
+        @Html.LabelFor(model => model.PrimeiroNome, null)
+        @Html.EditorFor(model => model.PrimeiroNome, null)
+        @Html.ValidationMessageFor(model => model.PrimeiroNome, "", null)
+    </div>
+
+    <div class="field" style="max-width:30%">
+        @Html.LabelFor(model => model.UltimoNome, null)
+        @Html.EditorFor(model => model.UltimoNome, null)
+        @Html.ValidationMessageFor(model => model.UltimoNome, "", null)
+    </div>
+
+    <div class="field" style="max-width:30%">
+        @Html.LabelFor(model => model.Experiencia, null)
+        @Html.EditorFor(model => model.Experiencia, null)
+        @Html.ValidationMessageFor(model => model.Experiencia, "", null)
+    </div>
+
+    <div class="field" style="max-width:30%">
+        @Html.LabelFor(model => model.CapacidadeMonetaria, null)
+        @Html.EditorFor(model => model.CapacidadeMonetaria, null)
+        @Html.ValidationMessageFor(model => model.CapacidadeMonetaria, "", null)
+    </div>
+
+    <div class="field" style="max-width:30%">
+        @Html.LabelFor(model => model.Localizacao, null)
+        @Html.EditorFor(model => model.Localizacao, null)
+        @Html.ValidationMessageFor(model => model.Localizacao, "", null)
+    </div>
+
+    <ul class="actions">
+        <li><input value="Register" class="button alt" type="submit"></li>
+    </ul>
+}

@@ -1,23 +1,23 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Projeto.Models;
 using Projeto.DataAccess;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-
 
 namespace Projeto.DataAccess
 {
     public class EmpresaDAO
     {
-    	public bool Insert(Empresa e) {
+        public bool Insert(Empresa e)
+        {
             // create sql connection object.  Be sure to put a valid connection Text
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("INSERT INTO Empresa " +
-				"(EmpresaID,Nome,Categoria,Website,CoordX,CoordY,MercadoID) " +
+                "(EmpresaID,Nome,Categoria,Website,CoordX,CoordY,MercadoID) " +
                 "VALUES(@EmpresaID, @Nome, @Categoria,@Website, @CoordX, @CoordY, @MercadoID)", Con);
 
             // create your parameters
@@ -47,9 +47,10 @@ namespace Projeto.DataAccess
             Con.Close();
 
             return Convert.ToBoolean(RowsAffected);
-    	}
+        }
 
-        public Empresa get(int empresaID) {
+        public Empresa get(int empresaID)
+        {
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT * FROM Empresa WHERE EmpresaID = @EmpresaID", Con);
@@ -61,7 +62,8 @@ namespace Projeto.DataAccess
             Empresa e = new Empresa();
 
             SqlDataReader reader = Cmd.ExecuteReader();
-            if(reader.Read()){
+            if (reader.Read())
+            {
                 e.empresaID = empresaID;
                 e.nome = reader["Nome"].ToString();
                 e.categoria = reader["Categoria"].ToString();
@@ -70,7 +72,8 @@ namespace Projeto.DataAccess
                 e.mercadoID = reader.GetInt32("MercadoID");
                 e.website = reader["Website"].ToString();
             }
-            else {
+            else
+            {
                 e = null;
             }
             Con.Close();
@@ -98,7 +101,8 @@ namespace Projeto.DataAccess
             return empresas;
         }
 
-        public List<String> listaEmpresasMercado(int mercado) {
+        public List<String> listaEmpresasMercado(int mercado)
+        {
             List<String> empresas = new List<String>();
             SqlConnection Con = new SqlConnection("MyConnectionString");
             // create command object with SQL query and link to connection object
@@ -110,8 +114,9 @@ namespace Projeto.DataAccess
             Con.Open();
 
             SqlDataReader reader = Cmd.ExecuteReader();
-            while(reader.Read()){
-                empresas.add(reader["Nome"].ToString());
+            while (reader.Read())
+            {
+                empresas.Add(reader["Nome"].ToString());
             }
 
             Con.Close();
@@ -119,20 +124,22 @@ namespace Projeto.DataAccess
             return empresas;
         }
 
-        public List<String> listaEmpresasMercado(string cat) {
+        public List<String> listaEmpresasMercado(string cat)
+        {
             List<String> empresas = new List<String>();
             SqlConnection Con = new SqlConnection("MyConnectionString");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT Nome FROM Empresa WHERE categoria = @categoria", Con);
 
-            Cmd.Parameters.Add("@Categoria", System.Data.SqlDbType.String);
+            Cmd.Parameters.Add("@Categoria", System.Data.SqlDbType.Text);
             Cmd.Parameters["@Categoria"].Value = cat;
 
             Con.Open();
 
             SqlDataReader reader = Cmd.ExecuteReader();
-            while(reader.Read()){
-                empresas.add(reader["Nome"].ToString());
+            while (reader.Read())
+            {
+                empresas.Add(reader["Nome"].ToString());
             }
 
             Con.Close();

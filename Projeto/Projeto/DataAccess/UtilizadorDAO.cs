@@ -16,36 +16,34 @@ namespace Projeto.DataAccess
 
             Utilizador flag = get(u.userID);
 
-            if(flag == null) return false;
+            if(flag == null)
+                return false;
+
             // create sql connection object.  Be sure to put a valid connection string
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;"); 
             SqlCommand Cmd = new SqlCommand("INSERT INTO Utilizador " +
-				"(UserID,PrimeiroNome,UltimoNome,Username,Password,Email,Experiencia,CapacidadeMonetaria,AreaInteresse,CoordX,CoordY) " +
-                "VALUES(@UserID, @PrimeiroNome, @UltimoNome, @Username, @Password, @Email, @Experiencia, @CapacidadeMonetaria, @AreaInteresse,@CoordX,@CoordY)", Con);
+				"(primeiro_nome,ultimo_nome,user_name,password,email,experiencia,capacidade,localizacao) " +
+                "VALUES(@primeiro_nome, @ultimo_nome, @user_name, @password, @email, @experiencia, @capacidade, @localizacao)", Con);
 
-            Cmd.Parameters.Add("@UserID", System.Data.SqlDbType.Int);
-            Cmd.Parameters.Add("@PrimeiroNome", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@UltimoNome", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@Username", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@Password", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@Email", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@Experiencia", System.Data.SqlDbType.Int);
-            Cmd.Parameters.Add("@CapacidadeMonetaria", System.Data.SqlDbType.Float);
-            Cmd.Parameters.Add("@AreaInteresse", System.Data.SqlDbType.Text);
-            Cmd.Parameters.Add("@CoordX", System.Data.SqlDbType.Float);
-            Cmd.Parameters.Add("@CoordY", System.Data.SqlDbType.Float);
+            Cmd.Parameters.Add("@primeiro_nome", System.Data.SqlDbType.Text);
+            Cmd.Parameters.Add("@ultimo_nome", System.Data.SqlDbType.Text);
+            Cmd.Parameters.Add("@user_name", System.Data.SqlDbType.Text);
+            Cmd.Parameters.Add("@password", System.Data.SqlDbType.Text);
+            Cmd.Parameters.Add("@email", System.Data.SqlDbType.Text);
+            Cmd.Parameters.Add("@experiencia", System.Data.SqlDbType.Int);
+            Cmd.Parameters.Add("@capacidade", System.Data.SqlDbType.Float);
+            Cmd.Parameters.Add("@localizacao", System.Data.SqlDbType.Text);
 
-            Cmd.Parameters["@UserID"].Value = u.userID;
-            Cmd.Parameters["@PrimeiroNome"].Value = u.primeiroNome;
-            Cmd.Parameters["@UltimoNome"].Value = u.ultimoNome;
-            Cmd.Parameters["@Username"].Value = u.username;
-            Cmd.Parameters["@Password"].Value = u.password;
-            Cmd.Parameters["@Email"].Value = u.email;
-            Cmd.Parameters["@Experiencia"].Value = u.experiencia;
-            Cmd.Parameters["@CapacidadeMonetaria"].Value = u.capacidadeMonetaria;
-            Cmd.Parameters["@AreaInteresse"].Value = u.areaInteresse;
-            Cmd.Parameters["@CoordX"].Value = u.coordX;
-            Cmd.Parameters["@CoordY"].Value = u.coordY;
+            Cmd.Parameters["@primeiro_nome"].Value = u.primeiroNome;
+            Cmd.Parameters["@ultimo_nome"].Value = u.ultimoNome;
+            Cmd.Parameters["@user_name"].Value = u.username;
+            Cmd.Parameters["@password"].Value = u.password;
+            Cmd.Parameters["@email"].Value = u.email;
+            Cmd.Parameters["@experiencia"].Value = u.experiencia;
+            Cmd.Parameters["@capacidade"].Value = u.capacidadeMonetaria;
+            Cmd.Parameters["@localizacao"].Value = u.localizacao;
+
+            Console.WriteLine("Cheguei aqui");
 
             Con.Open();
 
@@ -59,27 +57,25 @@ namespace Projeto.DataAccess
         public Utilizador get(int userID) {
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand("SELECT * FROM Utilizador WHERE UserID = @UserID", Con);
+            SqlCommand Cmd = new SqlCommand("SELECT * FROM Utilizador WHERE user_name = @user_name", Con);
 
             Con.Open();
-            Cmd.Parameters.Add("@UserID", System.Data.SqlDbType.Int);
-            Cmd.Parameters["@UserID"].Value = userID;
+            Cmd.Parameters.Add("@user_name", System.Data.SqlDbType.Int);
+            Cmd.Parameters["@user_name"].Value = userID;
 
             Utilizador u = new Utilizador();
 
             SqlDataReader reader = Cmd.ExecuteReader();
             if(reader.Read()){
-                u.userID = userID;
-                u.primeiroNome = reader["PrimeiroNome"].ToString();
-                u.ultimoNome = reader["UltimoNome"].ToString();
-                u.username = reader["Username"].ToString();
-                u.password = reader["Password"].ToString();
-                u.email = reader["Email"].ToString();
-                u.experiencia = reader.GetInt32("Experiencia");
-                u.capacidadeMonetaria = reader.GetFloat("CapacidadeMonetaria");
-                u.areaInteresse = reader["AreaInteresse"].ToString();
-                u.coordX = reader.GetFloat("CoordX");
-                u.coordY = reader.GetFloat("CoordY");
+                u.userID = reader.GetInt32("userID");
+                u.primeiroNome = reader["primeiro_nome"].ToString();
+                u.ultimoNome = reader["ultimo_nome"].ToString();
+                u.username = reader["user_name"].ToString();
+                u.password = reader["password"].ToString();
+                u.email = reader["email"].ToString();
+                u.experiencia = reader.GetInt32("experiencia");
+                u.capacidadeMonetaria = reader.GetFloat("capacidade");
+                u.localizacao = reader["localizacao"].ToString();
             }
             else {
                 u = null;
@@ -89,24 +85,26 @@ namespace Projeto.DataAccess
             return u;
         }
 
-        public bool login(string user,string pass) {
+        public bool Login(string user,string pass) {
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand("SELECT Username, Password FROM Utilizador WHERE Username = @Username AND Password = @Password", Con);
+            SqlCommand Cmd = new SqlCommand("SELECT user_name, password FROM[Utilizador] WHERE user_name = @user_name AND password = @password", Con);
 
             Con.Open();
-            Cmd.Parameters.Add("@Username", System.Data.SqlDbType.Text);
-            Cmd.Parameters["@Username"].Value = user;
-            Cmd.Parameters.Add("@Password", System.Data.SqlDbType.Text);
-            Cmd.Parameters["@Password"].Value = pass;
+            Cmd.Parameters.Add("@user_name", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters["@user_name"].Value = user;
+            Cmd.Parameters.Add("@password", System.Data.SqlDbType.VarChar);
+            Cmd.Parameters["@password"].Value = pass;
 
             SqlDataReader reader = Cmd.ExecuteReader();
 
+            bool res = reader.Read();
+
             Con.Close();
 
-            return reader.Read();     
+            return res;     
         }
-
+        /*
         public bool adicionaHistorico(int userID,string hist) {
 
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
@@ -128,6 +126,7 @@ namespace Projeto.DataAccess
 
             return Convert.ToBoolean(RowsAffected);
         }
+        
 
         public bool adicionaPreferencia(int userID,string pref) {
 
@@ -165,7 +164,7 @@ namespace Projeto.DataAccess
 
             SqlDataReader reader = Cmd.ExecuteReader();
             while(reader.Read()){
-                historico.add(reader["Nome"].ToString());
+                historico.Add(reader["Nome"].ToString());
             }
 
             Con.Close();
@@ -187,7 +186,7 @@ namespace Projeto.DataAccess
 
             SqlDataReader reader = Cmd.ExecuteReader();
             while(reader.Read()){
-                favoritos.add(reader["Nome"].ToString());
+                favoritos.Add(reader["Nome"].ToString());
             }
 
             Con.Close();
@@ -195,10 +194,6 @@ namespace Projeto.DataAccess
             return favoritos;
         }
 
-
-
-
-
-
+        */
     }
 }

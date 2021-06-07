@@ -1,0 +1,19 @@
+﻿@model Projeto.Models.LogInModel
+
+@using (Html.BeginForm())
+{
+    <div class="field" style="max-width:30%">
+        @Html.LabelFor(model => model.Username, null)
+        @Html.EditorFor(model => model.Username, null)
+        @Html.ValidationMessageFor(model => model.Username, "", null)
+    </div>
+    <div class="field" style="max-width:30%">
+        @Html.LabelFor(model => model.Password, null)
+        @Html.EditorFor(model => model.Password, null)
+        @Html.ValidationMessageFor(model => model.Password, "", null)
+    </div>
+
+    <ul class="actions">
+        <li><input value="Login" class="button alt" type="submit"></li>
+    </ul>
+}
