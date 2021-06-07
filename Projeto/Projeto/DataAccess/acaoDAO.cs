@@ -48,7 +48,7 @@ namespace Projeto.DataAccess
             return Convert.ToBoolean(RowsAffected);
         }
 
-        public Acao get(int acaoID)
+        public Acao get(string acaoID)
         {
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
@@ -78,13 +78,33 @@ namespace Projeto.DataAccess
             return a;
         }
 
-        public List<Acao> getAll()
+        public List<Acao> listaAcao()
         {
+            List<Acao> acoes = new List<Acao>();
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
             SqlCommand Cmd = new SqlCommand("SELECT * FROM Acao", Con);
 
-            return null;
+            Con.Open();
+
+            SqlDataReader reader = Cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Acao a = new Acao();
+
+                a.acaoID = reader["codigo"].ToString();
+                a.hora = reader.GetDateTime("hora");
+                a.high = reader.GetFloat("high");
+                a.low = reader.GetFloat("low");
+                a.avg = reader.GetFloat("avg");
+                a.empresaID = reader.GetInt32("empresa_id");
+
+                acoes.Add(a);
+            }
+
+            Con.Close();
+
+            return acoes;
         }
     }
 }

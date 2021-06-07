@@ -77,19 +77,27 @@ namespace Projeto.DataAccess
             return e;
         }
 
-        public List<String> listaEmpresas()
+        public List<Empresa> listaEmpresas()
         {
-            List<String> empresas = new List<String>();
+            List<Empresa> empresas = new List<Empresa>();
             SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
             // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand("SELECT nome FROM Empresa", Con);
+            SqlCommand Cmd = new SqlCommand("SELECT * FROM Empresa", Con);
 
             Con.Open();
 
             SqlDataReader reader = Cmd.ExecuteReader();
             while (reader.Read())
             {
-                empresas.Add(reader["nome"].ToString());
+                Empresa e = new Empresa();
+
+                e.nome = reader["nome"].ToString();
+                e.categoria = reader["categoria"].ToString();
+                e.localizacao = reader["localizacao"].ToString();
+                e.mercadoID = reader["mercado_codigo"].ToString();
+                e.website = reader["website"].ToString();
+
+                empresas.Add(e);
             }
 
             Con.Close();
@@ -97,12 +105,12 @@ namespace Projeto.DataAccess
             return empresas;
         }
 
-        public List<String> listaEmpresasMercado(int mercado)
+        public List<Empresa> listaEmpresasMercado(int mercado)
         {
-            List<String> empresas = new List<String>();
+            List<Empresa> empresas = new List<Empresa>();
             SqlConnection Con = new SqlConnection("MyConnectionString");
             // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand("SELECT nome FROM Empresa WHERE mercado_codigo = @mercado_codigo", Con);
+            SqlCommand Cmd = new SqlCommand("SELECT * FROM Empresa WHERE mercado_codigo = @mercado_codigo", Con);
 
             Cmd.Parameters.Add("@mercado_codigo", System.Data.SqlDbType.VarChar);
             Cmd.Parameters["@mercado_codigo"].Value = mercado;
@@ -112,7 +120,15 @@ namespace Projeto.DataAccess
             SqlDataReader reader = Cmd.ExecuteReader();
             while (reader.Read())
             {
-                empresas.Add(reader["nome"].ToString());
+                Empresa e = new Empresa();
+
+                e.nome = reader["nome"].ToString();
+                e.categoria = reader["categoria"].ToString();
+                e.localizacao = reader["localizacao"].ToString();
+                e.mercadoID = reader["mercado_codigo"].ToString();
+                e.website = reader["website"].ToString();
+
+                empresas.Add(e);
             }
 
             Con.Close();
@@ -120,12 +136,12 @@ namespace Projeto.DataAccess
             return empresas;
         }
 
-        public List<String> listaEmpresasCategoria(string cat)
+        public List<Empresa> listaEmpresasCategoria(string cat)
         {
-            List<String> empresas = new List<String>();
+            List<Empresa> empresas = new List<Empresa>();
             SqlConnection Con = new SqlConnection("MyConnectionString");
             // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand("SELECT nome FROM Empresa WHERE categoria = @categoria", Con);
+            SqlCommand Cmd = new SqlCommand("SELECT * FROM Empresa WHERE categoria = @categoria", Con);
 
             Cmd.Parameters.Add("@categoria", System.Data.SqlDbType.Text);
             Cmd.Parameters["@categoria"].Value = cat;
@@ -135,7 +151,15 @@ namespace Projeto.DataAccess
             SqlDataReader reader = Cmd.ExecuteReader();
             while (reader.Read())
             {
-                empresas.Add(reader["nome"].ToString());
+                Empresa e = new Empresa();
+
+                e.nome = reader["nome"].ToString();
+                e.categoria = reader["categoria"].ToString();
+                e.localizacao = reader["localizacao"].ToString();
+                e.mercadoID = reader["mercado_codigo"].ToString();
+                e.website = reader["website"].ToString();
+
+                empresas.Add(e);
             }
 
             Con.Close();

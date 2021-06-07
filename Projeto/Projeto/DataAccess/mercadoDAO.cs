@@ -59,5 +59,31 @@ namespace Projeto.DataAccess
 
             return m;
         }
+
+        public List<Mercado> listaMercado()
+        {
+            List<Mercado> mercados = new List<Mercado>();
+            SqlConnection Con = new SqlConnection("Server=.;Database=LI4_Project;Trusted_Connection=True;");
+            // create command object with SQL query and link to connection object
+            SqlCommand Cmd = new SqlCommand("SELECT * FROM Mercado", Con);
+
+            Con.Open();
+
+            SqlDataReader reader = Cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Mercado m = new Mercado();
+
+                m.mercadoID = reader["codigo"].ToString();
+                m.nome = reader["nome"].ToString();
+                m.pais = reader["pais"].ToString();
+
+                mercados.Add(m);
+            }
+
+            Con.Close();
+
+            return mercados;
+        }
     }
 }

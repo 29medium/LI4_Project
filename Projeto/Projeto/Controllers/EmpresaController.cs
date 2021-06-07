@@ -12,8 +12,9 @@ namespace Projeto.Controllers
     {
         public IActionResult Index()
         {
-            @empresas = listar
-            return View();
+            EmpresaDAO dao = new EmpresaDAO();
+            List<Empresa> empresas = dao.listaEmpresas();
+            return View(empresas);
         }
     }
 }

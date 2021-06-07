@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Projeto.DataAccess;
+using Projeto.Models;
+
 
 namespace Projeto.Controllers
 {
@@ -10,7 +13,10 @@ namespace Projeto.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            AcaoDAO dao = new AcaoDAO();
+            List<Acao> acao = dao.listaAcao();
+            
+            return View(acao);
         }
     }
 }

@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Projeto.DataAccess;
+using Projeto.Models;
 
 namespace Projeto.Controllers
 {
@@ -10,7 +12,10 @@ namespace Projeto.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            MercadoDAO dao = new MercadoDAO();
+            List < Mercado > m = dao.listaMercado();
+
+            return View(m);
         }
     }
 }

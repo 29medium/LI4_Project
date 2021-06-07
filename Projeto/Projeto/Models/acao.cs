@@ -13,7 +13,7 @@ namespace Projeto.Models
 {
     public class Acao
     {
-        public int acaoID{ get; set; }
+        public string acaoID{ get; set; }
         public DateTime hora{ get; set; }
         public float low{ get; set; }
         public float high{ get; set; }
@@ -21,7 +21,7 @@ namespace Projeto.Models
         public int empresaID{ get; set; }
 
         public Acao(){ }
-        public Acao(int aid, DateTime hora, float low, float high, float avg, int eid)
+        public Acao(string aid, DateTime hora, float low, float high, float avg, int eid)
         {
             this.acaoID = aid;
             this.hora = hora;
